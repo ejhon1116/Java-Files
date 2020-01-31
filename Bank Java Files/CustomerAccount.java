@@ -7,9 +7,9 @@ public class CustomerAccount {
 
     public CustomerAccount() {
         this.name = "";
-        this.accountNumber = "";
+        this.accountNumber = 0;
         this.ID = "";
-        this.balance = "";
+        this.balance = 0.0;
         this.type = "";
     }
     
@@ -21,18 +21,15 @@ public class CustomerAccount {
         this.type = type;
     }
     
-    public void setName(String newName)
-    {
+    public void setName(String newName) {
         this.name = newName;
     }
 
-    public void setAccountNumber(int newAccountNumber)
-    {
+    public void setAccountNumber(int newAccountNumber) {
         this.accountNumber = newAccountNumber;
     }
 
-    public void setID(String newID)
-    {
+    public void setID(String newID) {
         this.ID = newID;
     }
     
@@ -41,33 +38,27 @@ public class CustomerAccount {
         this.balance = newBalance;
     }
 
-    public void setType(String newType)
-    {
+    public void setType(String newType) {
         this.type = newType;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public int getAccountNumber()
-    {
+    public int getAccountNumber() {
         return accountNumber;
     }
 
-    public String getID()
-    {
+    public String getID() {
         return ID;
     }
 
-    public double getBalance()
-    {
+    public double getBalance() {
         return balance;
     }
 
-    public String getType()
-    {
+    public String getType() {
         return type;
     }
 
