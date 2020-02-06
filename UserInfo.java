@@ -62,15 +62,15 @@ public class UserInfo {
     char[] temp = {arr[0], arr[1]};
     arr[0] = arr[arr.length - 2];
     arr[1] = arr[arr.length - 1];
-    arr[arr.length - 2] = arr[0];
-    arr[arr.length - 1] = arr[1];
+    arr[arr.length - 2] = temp[0];
+    arr[arr.length - 1] = temp[1];
     for(char e : arr) tempstr = tempstr + e;
     return tempstr;
   }
   
   public String swapMiddleChars (String str) {
     double length = str.length()/2;
-    int even = (int) length;
+    int even = (int) length - 1;
     int odd = (int) (length + 0.5);
     char[] arr = str.toCharArray();
     String tempstr = "";
@@ -86,6 +86,7 @@ public class UserInfo {
     }
     else {
       char[] temp = {arr[even - 1], arr[even]};
+      System.out.println(arr[even-1]);
       arr[even - 1] = arr[even + 1];
       arr[even] = arr[even + 2];
       arr[even + 1] = temp[0];
