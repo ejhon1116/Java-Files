@@ -1,32 +1,59 @@
 public class UserInfo {
   private String un;
   private String enPass;
-  
-  public UserInfo (String un, String pass) {
-    un = un;
+  private String n;
+  private String address;
+  public UserInfo (String name, String addr, String username, String pass) {
+    n = name;
+    address = addr;
+    un = username;
     enPass = encrypt(pass);
   }
   
-  public void setUsername (String str) {
-    un = str;
+  //All the set methods
+  public void setName (String newName) {
+    n = newName;
   }
   
-  public String getUsername () {
-    return un;
+  public void setAddress (String newAddress) {
+    address = newAddress;
+  }
+  
+  public void setUsername (String newUsername) {
+    un = newUsername;
   }
   
   public void setPassword(String newPass) {
     enPass = encrypt(newPass);
   }
   
+  //All the get methods
+  public String getName () {
+    return n;
+  }
+  
+  public String getAddress () {
+    return address;
+  }
+  
+  public String getUsername () {
+    return un;
+  }
+  
   public String getPassword () {
     return enPass;
   }
   
+  public String toString() {
+    return "Name: " + n + "\nAddress: " + address + "\nUsername: " + un + "\nPassword: " + enPass;
+  }
+  
+  //Removes any whitespace in the string and converts them all to uppercase
   public String removeWhitespaceAndConvertToUpper(String str) {
     return str.trim().toUpperCase();
   }
   
+  //Substitutes replaces certain characters of the string
   public String substitute (String str) {
     String temp = "";
     char[] arr = str.toCharArray();
@@ -48,6 +75,7 @@ public class UserInfo {
     return temp;
   }
   
+  //Move the first half of the string to be the last half.
   public String swapHalfsforEncrypt (String str) {
     double length = str.length()/2;
     int even = (int) length;
@@ -56,6 +84,7 @@ public class UserInfo {
     else return str.substring(even, str.length()) + str.substring(0, even);
   }
   
+  //Swap the first 2 characters of the line with the last two characters.
   public String swapFirst2WithLast2 (String str) {
     String tempstr = "";
     char[] arr = str.toCharArray();
@@ -68,6 +97,7 @@ public class UserInfo {
     return tempstr;
   }
   
+  //Swap the two characters immediately to the left of the middle of the string with the two characters immediately to the right of the middle of the string. 
   public String swapMiddleChars (String str) {
     double length = str.length()/2;
     int even = (int) length - 1;
@@ -86,7 +116,6 @@ public class UserInfo {
     }
     else {
       char[] temp = {arr[even - 1], arr[even]};
-      System.out.println(arr[even-1]);
       arr[even - 1] = arr[even + 1];
       arr[even] = arr[even + 2];
       arr[even + 1] = temp[0];
@@ -96,6 +125,7 @@ public class UserInfo {
     }
   }
   
+  //Uses all of the individual encrypt methods on a string
   public String encrypt (String str) {
     return swapMiddleChars(swapFirst2WithLast2(swapHalfsforEncrypt(substitute(removeWhitespaceAndConvertToUpper(str)))));
   }
